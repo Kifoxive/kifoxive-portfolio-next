@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin '../hero.ts';
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+/* Every icon has a class attribute applied called lucide.
+This class name can be used in the CSS file to target all
+icons that are being used within the app. */
+/* .lucide {
+  width: 24px;
+  height: 24px;
+} */
