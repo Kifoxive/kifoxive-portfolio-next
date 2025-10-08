@@ -45,10 +45,7 @@ export default async function LocaleLayout({
       //   fontSans.variable
       // )}
       >
-        <Providers
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
-          locale={locale}
-        >
+        <Providers locale={locale}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">

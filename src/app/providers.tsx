@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { HeroUIProvider } from "@heroui/system";
-import { notFound, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { LocalesType } from "@/types/locales";
