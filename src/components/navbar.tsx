@@ -17,14 +17,14 @@ import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
-import { LocaleSwitcher } from "./language-switch";
+import { LocaleSwitcher } from "./LocaleSwitcher";
+import { usePathname } from "@/i18n/navigation";
 
 export const Navbar = () => {
   const t = useTranslations();
 
-  const pathname = usePathname();
   const locale = useLocale();
+  const currentPath = usePathname();
 
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
@@ -45,7 +45,7 @@ export const Navbar = () => {
         <div className="hidden sm:flex gap-1 justify-start ml-2">
           {siteConfig.navItems.map(({ href, value }) => {
             const isActive =
-              pathname === `/${locale}${href === "/" ? "" : href}`;
+              currentPath === href || currentPath.startsWith(`${href}/`);
 
             return (
               <NavbarItem
@@ -57,10 +57,10 @@ export const Navbar = () => {
                 <Link
                   className={clsx(
                     linkStyles({ color: "foreground" }),
-                    "data-[active=true]:text-primary data-[active=true]:font-medium"
+                    "data-[active=true]:text-primary data-[active=true]:font-medium",
                   )}
                   color="foreground"
-                  href={`/${locale}${href}`}
+                  href={href}
                 >
                   {t("navbar." + value)}
                 </Link>
@@ -88,21 +88,22 @@ export const Navbar = () => {
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navItems.map(({ href, value }) => (
-            <NavbarMenuItem key={href}>
-              <Link
-                color={
-                  pathname === `/${locale}${href === "/" ? "" : href}`
-                    ? "primary"
-                    : "foreground"
-                }
-                href={`/${locale}${href}`}
-                size="lg"
-              >
-                {t("navbar." + value)}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+          {siteConfig.navItems.map(({ href, value }) => {
+            const isActive =
+              currentPath === href || currentPath.startsWith(`${href}/`);
+
+            return (
+              <NavbarMenuItem key={href}>
+                <Link
+                  color={isActive ? "primary" : "foreground"}
+                  href={`/${locale}${href}`}
+                  size="lg"
+                >
+                  {t("navbar." + value)}
+                </Link>
+              </NavbarMenuItem>
+            );
+          })}
         </div>
       </NavbarMenu>
     </HeroUINavbar>

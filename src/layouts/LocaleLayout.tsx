@@ -8,6 +8,7 @@ import { Providers } from "@/app/providers";
 import { Navbar } from "@/components/navbar";
 import Link from "next/link";
 import { LocalesType } from "@/types/locales";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   //   title: {
@@ -39,29 +40,12 @@ export default async function LocaleLayout({
   return (
     <html suppressHydrationWarning lang={locale}>
       <head />
-      <body
-      // className={clsx(
-      //   "min-h-screen text-foreground bg-background font-sans antialiased",
-      //   fontSans.variable
-      // )}
-      >
+      <body>
         <Providers locale={locale}>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col">
             <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
-            </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                // isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://heroui.com?utm_source=next-app-template"
-                title="heroui.com homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">HeroUI</p>
-              </Link>
-            </footer>
+            <main className="flex-grow">{children}</main>
+            <Footer />
           </div>
         </Providers>
       </body>

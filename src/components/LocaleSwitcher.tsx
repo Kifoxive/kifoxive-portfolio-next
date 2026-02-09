@@ -16,7 +16,7 @@ import { I18nIcon } from "./icons";
 const locales = [
   { code: "en", label: "English" },
   { code: "uk", label: "Українська" },
-  { code: "cz", label: "Čeština" },
+  { code: "cs", label: "Čeština" },
 ];
 
 export function LocaleSwitcher() {

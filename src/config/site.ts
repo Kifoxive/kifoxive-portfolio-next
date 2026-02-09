@@ -13,30 +13,34 @@ export const siteConfig = {
   navItems: [
     {
       value: "home",
-      href: "/",
+      href: "#home",
     },
     {
-      value: "about",
-      href: "/about",
+      value: "projects",
+      href: "#projects",
     },
     {
-      value: "portfolio",
-      href: "/portfolio",
+      value: "what_i_do",
+      href: "#what_i_do",
+    },
+    {
+      value: "why_me",
+      href: "#why_me",
     },
     {
       value: "contact",
-      href: "/contact",
+      href: "#contact",
     },
   ],
+  routes: {
+    home: "home",
+    projects: "projects",
+    what_i_do: "what_i_do",
+    why_me: "why_me",
+    contact: "contact",
+  },
   availableLanguages: [
     { code: "uk", nativeName: "Українська", isRTL: false, isDefault: true },
     { code: "en-US", nativeName: "English", isRTL: false },
   ] as AvailableLanguage[],
-  links: {
-    github: "https://github.com/frontio-ai/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
-  },
 };

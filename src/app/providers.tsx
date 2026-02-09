@@ -9,9 +9,9 @@ import { LocalesType } from "@/types/locales";
 
 import en from "../messages/en.json";
 import uk from "../messages/uk.json";
-import cz from "../messages/cz.json";
+import cs from "../messages/cs.json";
 
-const LOCALES = { en, cz, uk };
+const LOCALES = { en, cs, uk };
 
 export interface ProvidersProps {
   children: React.ReactNode;
